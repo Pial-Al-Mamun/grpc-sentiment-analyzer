@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package sentiment;
+
+message SentimentRequest {
+  string text = 1; 
+}
+
+message SentimentResponse {
+  string sentiment = 1;
+  float confidence = 2;
+}
+// The SentimentService defines the gRPC service for sentiment analysis.
+service SentimentService {
+    // Analyzes the sentiment of the given text and returns the sentiment and confidence score.
+  rpc AnalyzeSentiment(SentimentRequest) returns (SentimentResponse);
+}
